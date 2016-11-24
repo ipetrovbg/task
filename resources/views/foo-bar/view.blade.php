@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-Foo Bars
+{{ $fooBar->foo_bar_name }}
 @endsection
 
 @section('content')

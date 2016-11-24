@@ -52,13 +52,15 @@ class FooBarController extends Controller
     }
 
     public function update(Request $request){
+
     	$fooBar = $request->input('data');
     	$status = FooBar::where('id', $fooBar['id'])->update(['foo_bar_name' => $fooBar['foo_bar_name']]);
+
     	return response()->json(['status'=>$status]);
     }
 
     public function delete(Request $request, $id){
-    	$fooBar = FooBar::where('id', $id)->delete();
+    	FooBar::where('id', $id)->delete();
     }
 
 }
