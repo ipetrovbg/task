@@ -21,7 +21,7 @@ Foo Bars
 								<span ng-click="vm.sortData('created_at')" class="input-group-addon">
 									<span ng-class="vm.getClass('created_at')" class="glyphicon glyphicon-sort-by-attributes"></span>
 								</span>
-								<input type="text" class="form-control" ng-model="vm.filter">
+								<input type="text" class="form-control" placeholder="Start typing to filter" ng-model="vm.filter">
 							</div>
 						</div>
 					</div>					
