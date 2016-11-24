@@ -18,16 +18,13 @@ Foo Bars
 						<div class="col-sm-12">
 							<div class="input-group">
 								<span class="input-group-addon"><span class="glyphicon glyphicon-filter"></span></span>
+								<span ng-click="vm.sortData('created_at')" class="input-group-addon">
+									<span ng-class="vm.getClass('created_at')" class="glyphicon glyphicon-sort-by-attributes"></span>
+								</span>
 								<input type="text" class="form-control" ng-model="vm.filter">
 							</div>
 						</div>
 					</div>					
-				</div>
-				<div class="row clearfix">
-					<div class="col-md-12">
-						<button ng-click="vm.sortData('created_at')" class="btn btn-default">
-						<span ng-class="vm.getClass('created_at')" class="glyphicon glyphicon-sort-by-attributes"></span></button>
-					</div>
 				</div>
 
 				<div class="row">
