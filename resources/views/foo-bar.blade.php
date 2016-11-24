@@ -14,27 +14,39 @@ Foo Bars
                 <div class="panel-body">
 
 				<div class="form-group clearfix">
-					<div class="col-sm-12">
-						<div class="input-group">
-							<span class="input-group-addon"><span class="glyphicon glyphicon-filter"></span></span>
-							<input type="text" class="form-control" ng-model="vm.filter">
+					<div class="row">
+						<div class="col-sm-12">
+							<div class="input-group">
+								<span class="input-group-addon"><span class="glyphicon glyphicon-filter"></span></span>
+								<input type="text" class="form-control" ng-model="vm.filter">
+							</div>
 						</div>
+					</div>					
+				</div>
+				<div class="row clearfix">
+					<div class="col-md-12">
+						<button ng-click="vm.sortData('created_at')" class="btn btn-default">
+						<span ng-class="vm.getClass('created_at')" class="glyphicon glyphicon-sort-by-attributes"></span></button>
 					</div>
 				</div>
 
-                   	<ul class="list-group">
-					  <li data-ng-repeat="fooBar in vm.fooBars  | filter : vm.filter" class="list-group-item clearfix">
-					  	<a ng-href="{{ url('/foo-bar') }}/<% fooBar.id %>"><span data-ng-bind="fooBar.foo_bar_name"></span></a>
-					  	<span class="pull-right">
-					  		<a href="" ng-click="vm.deleteFooBar(fooBar.id, $index)" class="btn btn-danger">Delete</a>
-						  	<a href="{{ url('foo-bar/update') }}/<% fooBar.id %>" class="btn btn-primary" type="button">
-							  Edit
-							</a>	
-					  	</span>
-					  						
-					  </li>
-					  
-					</ul>
+				<div class="row">
+					<div class="col-md-12">
+						<ul class="list-group">
+						  <li data-ng-repeat="fooBar in vm.fooBars  | filter : vm.filter | orderBy:vm.sorting:vm.reverse" class="list-group-item clearfix">
+						  	<a ng-href="{{ url('/foo-bar') }}/<% fooBar.id %>">
+						  	<span data-ng-bind="fooBar.foo_bar_name"></span>						  	
+						  	</a>
+						  	<span class="pull-right">
+						  		<a href="" ng-click="vm.deleteFooBar(fooBar.id, $index)" class="btn btn-danger">Delete</a>
+							  	<a href="{{ url('foo-bar/update') }}/<% fooBar.id %>" class="btn btn-primary" type="button">Edit</a>	
+						  	</span>					  						
+						  	<span class="badge pull-right" data-ng-bind="fooBar.created_at"></span>
+						  </li>					  
+						</ul>
+					</div>
+				</div>
+                   	
                 </div>
             </div>
         </div>

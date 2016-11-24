@@ -10,11 +10,15 @@
 		function FooBarController( mainService ){
 			var vm = this;
 
-			vm.message = '';
+			
 					
 			bootstrap();
 
 			function bootstrap(){
+				vm.message = '';
+				vm.sorting = 'created_at';
+        		vm.reverse = true;
+
 				mainService.getAllFooBars()
 				.then(function(response){
 					vm.fooBars = response;
@@ -25,6 +29,19 @@
 						vm.fooBar = response;
 					});
 			}
+
+
+
+        vm.sortData = function (column) {
+            vm.reverse = (vm.sorting === column) ? !vm.reverse : false;
+            vm.sorting = column;
+        };
+        vm.getClass = function (column) {
+            if (vm.sorting === column) {
+                return vm.reverse ? 'glyphicon-sort-by-attributes' : 'glyphicon-sort-by-attributes-alt';
+            }
+            return '';
+        };
 
 				vm.createFooBar = function(){
 					if(vm.fooBarName){
@@ -41,7 +58,7 @@
 								});
 						}
 					}
-				}
+				}				
 
 				vm.updateFooBar = function(){
 					mainService.updateFooBar( vm.fooBar )
